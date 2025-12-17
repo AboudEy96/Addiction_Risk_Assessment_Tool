@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.Integer?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="900.0" style="-fx-background-color: #f8fafc;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.aboudey.addictionriskassessmenttool.TestController">
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: #f8fafc;">
+            <content>
+                <VBox spacing="25.0" style="-fx-padding: 40;">
+                    <children>
+                        <VBox spacing="5.0">
+                            <children>
+                                <Label text="Create New Test" textFill="#1e293b">
+                                    <font>
+                                        <Font name="Segoe UI Bold" size="28.0" />
+                                    </font>
+                                </Label>
+                                <Label text="Fill in the details below to set up your assessment." textFill="#64748b">
+                                    <font>
+                                        <Font name="Segoe UI" size="14.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-border-color: #e2e8f0; -fx-border-radius: 15;">
+                            <effect>
+                                <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0">
+                                    <color>
+                                        <Color red="0.0" green="0.0" blue="0.0" opacity="0.05" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                            <children>
+                                <VBox spacing="8.0">
+                                    <Label style="-fx-font-weight: bold;" text="Test Title" textFill="#475569" />
+                                    <TextField promptText="e.g. Annual Risk Assessment" style="-fx-background-color: #f1f5f9; -fx-padding: 12; -fx-background-radius: 8; -fx-border-color: #cbd5e1; -fx-border-radius: 8;" />
+                                </VBox>
+                                <VBox spacing="8.0">
+                                    <Label style="-fx-font-weight: bold;" text="Description" textFill="#475569" />
+                                    <TextArea prefHeight="80.0" promptText="Describe the purpose of this test..." style="-fx-control-inner-background: #f1f5f9; -fx-background-radius: 8; -fx-border-color: #cbd5e1; -fx-border-radius: 8; -fx-padding: 5;" wrapText="true" />
+                                </VBox>
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-border-color: #e2e8f0; -fx-border-radius: 15;">
+                            <effect>
+                                <DropShadow height="15.0" radius="7.0" width="15.0">
+                                    <color>
+                                        <Color opacity="0.05" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                            <children>
+                                <HBox alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="Question 1" textFill="#334155">
+                                            <font>
+                                                <Font name="Segoe UI Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Label style="-fx-font-size: 12;" text="Risk Level" textFill="#64748b" />
+                                    </children>
+                                </HBox>
+
+                                <Separator prefWidth="200.0" />
+
+                                <VBox spacing="12.0">
+                                    <children>
+                                        <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                            <children>
+                                                <TextField promptText="Enter answer option..." style="-fx-background-radius: 8; -fx-padding: 10;" HBox.hgrow="ALWAYS" />
+                                                <ComboBox fx:id="riskCombo1" prefWidth="80.0" promptText="1" style="-fx-background-radius: 8; -fx-font-weight: bold;">
+                                                    <items>
+                                                        <FXCollections fx:factory="observableArrayList">
+                                                            <Integer fx:value="1" />
+                                                            <Integer fx:value="2" />
+                                                            <Integer fx:value="3" />
+                                                            <Integer fx:value="4" />
+                                                            <Integer fx:value="5" />
+                                                        </FXCollections>
+                                                    </items>
+                                                </ComboBox>
+                                                <Button style="-fx-background-color: #fee2e2; -fx-text-fill: #ef4444; -fx-background-radius: 8;" text="✕" />
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                            <children>
+                                                <TextField promptText="Enter answer option..." style="-fx-background-radius: 8; -fx-padding: 10;" HBox.hgrow="ALWAYS" />
+                                                <ComboBox fx:id="riskCombo2" prefWidth="80.0" promptText="1" style="-fx-background-radius: 8; -fx-font-weight: bold;">
+                                                    <items>
+                                                        <FXCollections fx:factory="observableArrayList">
+                                                            <Integer fx:value="1" />
+                                                            <Integer fx:value="2" />
+                                                            <Integer fx:value="3" />
+                                                            <Integer fx:value="4" />
+                                                            <Integer fx:value="5" />
+                                                        </FXCollections>
+                                                    </items>
+                                                </ComboBox>
+                                                <Button style="-fx-background-color: #fee2e2; -fx-text-fill: #ef4444; -fx-background-radius: 8;" text="✕" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+
+                                <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: #4f46e5; -fx-font-weight: bold; -fx-border-color: #4f46e5; -fx-border-radius: 8;" text="+ Add Answer Option" />
+                            </children>
+                        </VBox>
+
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" style="-fx-background-color: #4f46e5; -fx-background-radius: 12; -fx-cursor: hand;" text="Add Another Question" textFill="WHITE">
+                            <font>
+                                <Font name="Segoe UI Bold" size="15.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" prefHeight="80.0" spacing="15.0" style="-fx-background-color: white; -fx-border-color: #e2e8f0; -fx-border-width: 1 0 0 0;">
+            <children>
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-text-fill: #64748b; -fx-font-weight: bold;" text="Cancel" />
+                <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #0f172a; -fx-background-radius: 10; -fx-cursor: hand;" text="Save Test" textFill="WHITE">
+                    <font>
+                        <Font name="Segoe UI Bold" size="14.0" />
+                    </font>
+                </Button>
+            </children>
+            <padding>
+                <Insets right="40.0" />
+            </padding>
+        </HBox>
+    </bottom>
+</BorderPane>
