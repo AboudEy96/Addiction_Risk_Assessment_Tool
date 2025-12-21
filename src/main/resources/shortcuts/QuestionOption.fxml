@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      spacing="20.0"
+      style="-fx-background-color: white;
+             -fx-background-radius: 15;
+             -fx-padding: 25;
+             -fx-border-color: #e2e8f0;
+             -fx-border-radius: 15;">
+
+    <effect>
+        <DropShadow radius="7">
+            <color>
+                <Color opacity="0.05"/>
+            </color>
+        </DropShadow>
+    </effect>
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label text="Question"
+               textFill="#334155">
+            <font>
+                <Font name="Segoe UI Bold" size="18.0"/>
+            </font>
+        </Label>
+
+        <TextField prefHeight="25.0" prefWidth="545.0"/>
+
+        <Label text="Risk Impact Level"
+               style="-fx-font-size: 12;"
+               textFill="#64748b"/>
+    </HBox>
+
+    <Separator/>
+
+    <VBox spacing="12.0">
+        <HBox alignment="CENTER_LEFT" spacing="12.0">
+            <TextField promptText="Enter answer option..."
+                       style="-fx-background-radius: 8; -fx-padding: 10;"
+                       HBox.hgrow="ALWAYS"/>
+
+            <ComboBox prefWidth="120.0"
+                      promptText="Low"
+                      style="-fx-background-color: #dcfce7;
+                             -fx-text-fill: #166534;
+                             -fx-background-radius: 8;
+                             -fx-font-weight: bold;"/>
+        </HBox>
+
+        <HBox alignment="CENTER_LEFT" spacing="12.0">
+            <TextField promptText="Enter answer option..."
+                       style="-fx-background-radius: 8; -fx-padding: 10;"
+                       HBox.hgrow="ALWAYS"/>
+
+            <ComboBox prefWidth="120.0"
+                      promptText="High"
+                      style="-fx-background-color: #fee2e2;
+                             -fx-text-fill: #b91c1c;
+                             -fx-background-radius: 8;
+                             -fx-font-weight: bold;"/>
+        </HBox>
+    </VBox>
+
+</VBox>

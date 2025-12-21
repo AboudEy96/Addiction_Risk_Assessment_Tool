@@ -8,6 +8,7 @@ public class Question {
     private int id;
     private String text;
     private List<Answer> answers;
+    // user selected answer
     public Answer selectedAns;
 
     public Question(int id, String text) {

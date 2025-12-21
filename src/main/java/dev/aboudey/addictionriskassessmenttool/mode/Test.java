@@ -29,4 +29,8 @@ public class Test {
     return sum/questions.size();
     }
 
+    public String getTitle() {
+        return title;
+    }
+
 }

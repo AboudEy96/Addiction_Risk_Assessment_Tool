@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.Integer?>
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="900.0" style="-fx-background-color: #f8fafc;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.aboudey.addictionriskassessmenttool.TestController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="905.0" prefWidth="1187.0" style="-fx-background-color: #f8fafc;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.aboudey.addictionriskassessmenttool.ui.CreateTestScreen">
     <center>
         <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: #f8fafc;">
             <content>
@@ -42,7 +47,7 @@
                             <children>
                                 <VBox spacing="8.0">
                                     <Label style="-fx-font-weight: bold;" text="Test Title" textFill="#475569" />
-                                    <TextField promptText="e.g. Annual Risk Assessment" style="-fx-background-color: #f1f5f9; -fx-padding: 12; -fx-background-radius: 8; -fx-border-color: #cbd5e1; -fx-border-radius: 8;" />
+                                    <TextField fx:id="titleField" promptText="e.g. Annual Risk Assessment" style="-fx-background-color: #f1f5f9; -fx-padding: 12; -fx-background-radius: 8; -fx-border-color: #cbd5e1; -fx-border-radius: 8;" />
                                 </VBox>
                                 <VBox spacing="8.0">
                                     <Label style="-fx-font-weight: bold;" text="Description" textFill="#475569" />
@@ -51,7 +56,7 @@
                             </children>
                         </VBox>
 
-                        <VBox spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-border-color: #e2e8f0; -fx-border-radius: 15;">
+                        <VBox fx:id="questionContainer" spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-border-color: #e2e8f0; -fx-border-radius: 15;">
                             <effect>
                                 <DropShadow height="15.0" radius="7.0" width="15.0">
                                     <color>
@@ -67,57 +72,37 @@
                                                 <Font name="Segoe UI Bold" size="18.0" />
                                             </font>
                                         </Label>
-                                        <Region HBox.hgrow="ALWAYS" />
-                                        <Label style="-fx-font-size: 12;" text="Risk Level" textFill="#64748b" />
+                              <TextField prefHeight="25.0" prefWidth="545.0" />
+                                        <Label style="-fx-font-size: 12;" text="Risk Impact Level" textFill="#64748b" />
                                     </children>
                                 </HBox>
 
-                                <Separator prefWidth="200.0" />
+                                <Separator prefHeight="53.0" prefWidth="1053.0" />
 
-                                <VBox spacing="12.0">
+                                <VBox fx:id="answersContainer" spacing="12.0" xmlns:fx="http://javafx.com/fxml/1">
                                     <children>
                                         <HBox alignment="CENTER_LEFT" spacing="12.0">
                                             <children>
                                                 <TextField promptText="Enter answer option..." style="-fx-background-radius: 8; -fx-padding: 10;" HBox.hgrow="ALWAYS" />
-                                                <ComboBox fx:id="riskCombo1" prefWidth="80.0" promptText="1" style="-fx-background-radius: 8; -fx-font-weight: bold;">
-                                                    <items>
-                                                        <FXCollections fx:factory="observableArrayList">
-                                                            <Integer fx:value="1" />
-                                                            <Integer fx:value="2" />
-                                                            <Integer fx:value="3" />
-                                                            <Integer fx:value="4" />
-                                                            <Integer fx:value="5" />
-                                                        </FXCollections>
-                                                    </items>
-                                                </ComboBox>
+                                                <ComboBox prefWidth="120.0" promptText="Low" style="-fx-background-color: #dcfce7; -fx-text-fill: #166534; -fx-background-radius: 8; -fx-font-weight: bold;" />
                                                 <Button style="-fx-background-color: #fee2e2; -fx-text-fill: #ef4444; -fx-background-radius: 8;" text="✕" />
                                             </children>
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" spacing="12.0">
                                             <children>
                                                 <TextField promptText="Enter answer option..." style="-fx-background-radius: 8; -fx-padding: 10;" HBox.hgrow="ALWAYS" />
-                                                <ComboBox fx:id="riskCombo2" prefWidth="80.0" promptText="1" style="-fx-background-radius: 8; -fx-font-weight: bold;">
-                                                    <items>
-                                                        <FXCollections fx:factory="observableArrayList">
-                                                            <Integer fx:value="1" />
-                                                            <Integer fx:value="2" />
-                                                            <Integer fx:value="3" />
-                                                            <Integer fx:value="4" />
-                                                            <Integer fx:value="5" />
-                                                        </FXCollections>
-                                                    </items>
-                                                </ComboBox>
+                                                <ComboBox prefWidth="120.0" promptText="High" style="-fx-background-color: #fee2e2; -fx-text-fill: #b91c1c; -fx-background-radius: 8; -fx-font-weight: bold;" />
                                                 <Button style="-fx-background-color: #fee2e2; -fx-text-fill: #ef4444; -fx-background-radius: 8;" text="✕" />
                                             </children>
                                         </HBox>
                                     </children>
                                 </VBox>
 
-                                <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: #4f46e5; -fx-font-weight: bold; -fx-border-color: #4f46e5; -fx-border-radius: 8;" text="+ Add Answer Option" />
+                                <Button mnemonicParsing="false" onAction="#onAddAnswerButtonClick" style="-fx-background-color: transparent; -fx-text-fill: #4f46e5; -fx-font-weight: bold; -fx-border-color: #4f46e5; -fx-border-radius: 8;" text="+ Add Answer Option" />
                             </children>
                         </VBox>
 
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" style="-fx-background-color: #4f46e5; -fx-background-radius: 12; -fx-cursor: hand;" text="Add Another Question" textFill="WHITE">
+                              <Button fx:id="questionAddButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAddQuestionClick" prefHeight="50.0" style="-fx-background-color: #4f46e5; -fx-background-radius: 12; -fx-cursor: hand;" text="Add Another Question" textFill="WHITE">
                             <font>
                                 <Font name="Segoe UI Bold" size="15.0" />
                             </font>
@@ -128,10 +113,10 @@
         </ScrollPane>
     </center>
     <bottom>
-        <HBox alignment="CENTER_RIGHT" prefHeight="80.0" spacing="15.0" style="-fx-background-color: white; -fx-border-color: #e2e8f0; -fx-border-width: 1 0 0 0;">
+        <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="983.0" spacing="15.0" style="-fx-background-color: white; -fx-border-color: #e2e8f0; -fx-border-width: 1 0 0 0;">
             <children>
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-text-fill: #64748b; -fx-font-weight: bold;" text="Cancel" />
-                <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #0f172a; -fx-background-radius: 10; -fx-cursor: hand;" text="Save Test" textFill="WHITE">
+                <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveButtonClick" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #0f172a; -fx-background-radius: 10; -fx-cursor: hand;" text="Save Test" textFill="WHITE">
                     <font>
                         <Font name="Segoe UI Bold" size="14.0" />
                     </font>
