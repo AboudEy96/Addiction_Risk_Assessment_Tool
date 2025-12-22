@@ -4,6 +4,7 @@ import dev.aboudey.addictionriskassessmenttool.builder.TestBuilder;
 import dev.aboudey.addictionriskassessmenttool.mode.Answer;
 import dev.aboudey.addictionriskassessmenttool.mode.Question;
 import dev.aboudey.addictionriskassessmenttool.mode.Test;
+import dev.aboudey.addictionriskassessmenttool.repository.TestRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,6 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,13 +53,32 @@ public class CreateTestScreen {
     // make the test
     @FXML
     public void onSaveButtonClick() {
-        // get all text fields in one question and add it
-        List<TextField> fields = getAllTextFields(answersContainer);
 
-        Test test = new TestBuilder().setTitle(titleField.getText()).build();
-        getAnswerLoops(test, new Question(1, "hiii it's test"));
-        System.out.printf(test.getTitle());
+        Test test = new TestBuilder()
+                .setTitle(titleField.getText())
+                .build();
 
+        List<TextField> questionFields = getAllTextFields(questionContainer, "questionField");
+        List<TextField> answerFields = getAllTextFields(answersContainer, "answerField");
+
+        for (int q = 0; q < questionFields.size(); q++) {
+            Question question = new Question(q, questionFields.get(q).getText());
+            for (int a = 0; a < answerFields.size(); a++) {
+                Answer answer = new Answer(a, answerFields.get(a).getText(), 5);
+                question.addAnswer(answer);
+            }
+            test.addQuestion(question);
+        }
+        System.out.println("Test saved: " + test.getTitle());
+
+        try {
+            Path path = Path.of("src/main/resources/tests/" + test.getTitle()  + ".txt");
+            TestRepository repo = new TestRepository(path);
+            repo.save(test);
+        } catch (IOException e) {
+            System.out.print("Failed to save test");
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -73,29 +94,39 @@ public class CreateTestScreen {
 
     // get all text fields in VBox ( answer container ) to add it to question
 
-    private List<TextField> getAllTextFields(Parent parent) { // the vbox parent
+    private List<TextField> getAllTextFields(Parent parent, String styleClass) { // the vbox parent
         List<TextField> result = new ArrayList<>();
 
         for (Node node : parent.getChildrenUnmodifiable()) {
-            if (node instanceof TextField tf) {
+            if (node instanceof TextField tf && tf.getStyleClass().contains(styleClass)) {
                 result.add(tf);
             } else if (node instanceof Parent p) {
-                result.addAll(getAllTextFields(p));
+                result.addAll(getAllTextFields(p, styleClass));
             }
         }
         return result;
     }
-
-    // get the answer for current test and current question
-    private void getAnswerLoops(Test test, Question question) {
-        List<TextField> fields = getAllTextFields(answersContainer);
-        for (int i = 0; i<= fields.size() - 1; i++) {
-            Answer answer = new Answer(i, fields.get(i).getText(), 5);
-            question.addAnswer(answer);
-            System.out.printf("added answer:" + fields.get(i).getText() + " to question");
+   /* private Question getQuestionLoops(Test test) {
+        List<TextField> fields = getAllTextFields(questionContainer, "questionField");
+       for (int i = 0; i<= fields.size() - 1; i++) {
+            Question question = new Question(i, fields.get(i).getText());
+            test.addQuestion(question);
+            System.out.printf("added question: " + fields.get(i).getText() + " to test");
+       return question;
         }
-        test.addQuestion(question);
+       return null;
     }
 
+    // get the answer for current test and current question
+    private Answer getAnswerLoops(Test test) {
+        List<TextField> fields = getAllTextFields(answersContainer, "answerField");
+        for (int i = 0; i<= fields.size() - 1; i++) {
+            Answer answer = new Answer(i, fields.get(i).getText(), 5);
+            System.out.printf("added answer:" + fields.get(i).getText() + " to question");
+            return answer;
+        }
+        return null;
+    }
+*/
 
 }

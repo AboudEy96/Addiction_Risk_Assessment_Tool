@@ -32,5 +32,6 @@ public class Test {
     public String getTitle() {
         return title;
     }
-
+    public int getId () {return id;}
+    public List<Question> getQuestions() { return questions;}
 }

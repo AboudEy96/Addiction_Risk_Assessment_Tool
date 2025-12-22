@@ -58,6 +58,12 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml-engine</artifactId>
+            <version>2.6</version>
+        </dependency>
+
     </dependencies>
 
     <build>

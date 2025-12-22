@@ -14,6 +14,8 @@ public class Answer {
         this.text = text;
 
     }
+
+    public String getText() {return text;} public int getId() {return id;}
     public int getRiskLevel() {
         return riskLevel;
     }

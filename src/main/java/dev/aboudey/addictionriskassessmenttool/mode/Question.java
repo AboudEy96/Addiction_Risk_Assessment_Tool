@@ -21,6 +21,10 @@ public class Question {
     public void setSelectedAns(Answer selected) {
         selectedAns = selected;
     }
+
+    public int getId() {return id;}
+    public List<Answer> getAnswers (){return answers;}
+    public String getText() {return text;}
     public int calculateRisk() {
         if (selectedAns == null) return 0;
 
