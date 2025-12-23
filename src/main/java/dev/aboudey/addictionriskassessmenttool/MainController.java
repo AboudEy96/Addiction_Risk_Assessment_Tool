@@ -1,5 +1,8 @@
 package dev.aboudey.addictionriskassessmenttool;
 
+import dev.aboudey.addictionriskassessmenttool.mode.Answer;
+import dev.aboudey.addictionriskassessmenttool.mode.Question;
+import dev.aboudey.addictionriskassessmenttool.repository.Singletoon.SelectedTest;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +19,8 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainController {
 
@@ -78,13 +83,60 @@ public class MainController {
     -fx-background-radius: 10;
     -fx-cursor: hand;
 """);
+        btn.getStyleClass().add("testButton");
+        //
         btn.setOnAction(e -> openTest(testFile));
 
         testsBoxHandler.getChildren().add(btn);
     }
 
     private void openTest(Path testFile) {
-// load tgset screen
         System.out.println("Opening test file: " + testFile.getFileName());
+
+        try {
+            List<String> lines = Files.readAllLines(testFile);
+
+            Question currentQuestion = null;
+
+            for (String line : lines) {
+
+                String[] parts = line.split("\\|");
+
+                switch (parts[0]) {
+
+                    case "TEST" -> {
+                        SelectedTest.selectedTestName = parts[2];
+                    }
+
+                    case "QUESTION" -> {
+                        int id = Integer.parseInt(parts[1]);
+                        String text = parts[2];
+
+                        currentQuestion = new Question(id, text);
+                        SelectedTest.selectedQuestions.add(currentQuestion);
+                    }
+
+                    case "ANSWER" -> {
+                        if (currentQuestion == null) break;
+
+                        int id = Integer.parseInt(parts[1]);
+                        String text = parts[2];
+                        int score = Integer.parseInt(parts[3]);
+
+                        currentQuestion.addAnswer(
+                                new Answer(id, text, score)
+                        );
+                    }
+
+                    case "END" -> {
+                        System.out.println("Test loaded successfully");
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
 }

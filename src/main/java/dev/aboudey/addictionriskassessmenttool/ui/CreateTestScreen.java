@@ -63,8 +63,9 @@ public class CreateTestScreen {
 
         for (int q = 0; q < questionFields.size(); q++) {
             String qText = questionFields.get(q).getText();
-            System.out.println("Question #" + q + ": '" + qText + "'");  // **طباعة نص السؤال**
 
+            System.out.println(questionFields);// ***طابعة الفيلد** (object)
+            System.out.println("Question #" + q + ": '" + qText + "'");  // **طباعة نص السؤال**
             Question question = new Question(q, qText);
 
             for (int a = 0; a < answerFields.size(); a++) {

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #f8fafc;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.aboudey.addictionriskassessmenttool.TakeTestController">
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: #f8fafc;">
+            <content>
+                <VBox alignment="CENTER" spacing="30.0">
+                    <padding>
+                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                    </padding>
+                    <children>
+                        <VBox alignment="CENTER" spacing="5.0">
+                            <children>
+                                <Label id="testTitle" fx:id="testTitleLabel" text="Test Name" textFill="#1e293b">
+                                    <font>
+                                        <Font name="Segoe UI Bold" size="24.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="progressLabel" text="Question x of z" textFill="#64748b">
+                                    <font>
+                                        <Font name="Segoe UI" size="14.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </VBox>
+
+                        <VBox maxWidth="800.0" spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30; -fx-border-color: #e2e8f0; -fx-border-radius: 15;">
+                            <effect>
+                                <DropShadow height="20.0" radius="9.5" width="20.0">
+                                    <color>
+                                        <Color opacity="0.08" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                            <children>
+                                <Label id="questionField" fx:id="questionTextLabel" text="Question text" textFill="#334155" wrapText="true">
+                                    <font>
+                                        <Font name="Segoe UI Bold" size="18.0" />
+                                    </font>
+                                </Label>
+
+                                <Separator prefWidth="200.0" />
+
+                                <VBox fx:id="answersContainer" spacing="15.0">
+                                    <children>
+                                        <fx:define>
+                                            <ToggleGroup fx:id="answersToggleGroup" />
+                                        </fx:define>
+
+                                        <RadioButton style="-fx-font-size: 14px; -fx-text-fill: #475569; -fx-cursor: hand;" text="answer 1">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="answersToggleGroup" />
+                                 </toggleGroup></RadioButton>
+                                        <RadioButton style="-fx-font-size: 14px; -fx-text-fill: #475569; -fx-cursor: hand;" text="answer 2" toggleGroup="$answersToggleGroup" />
+                                        <RadioButton style="-fx-font-size: 14px; -fx-text-fill: #475569; -fx-cursor: hand;" text="answer 3" toggleGroup="$answersToggleGroup" />
+                                        <RadioButton style="-fx-font-size: 14px; -fx-text-fill: #475569; -fx-cursor: hand;" text="answer 4" toggleGroup="$answersToggleGroup" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" prefHeight="80.0" spacing="15.0" style="-fx-background-color: white; -fx-border-color: #e2e8f0; -fx-border-width: 1 0 0 0;" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="prevButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-text-fill: #64748b; -fx-font-weight: bold; -fx-cursor: hand;" text="Previous" visible="false" /> <Region HBox.hgrow="ALWAYS" /> <Button id="nextButton" fx:id="nextButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #4f46e5; -fx-background-radius: 10; -fx-cursor: hand;" text="Next Question" textFill="WHITE">
+                <font>
+                    <Font name="Segoe UI Bold" size="14.0" />
+                </font>
+            </Button>
+            </children>
+            <padding>
+                <Insets left="40.0" right="40.0" />
+            </padding>
+        </HBox>
+    </bottom>
+</BorderPane>
