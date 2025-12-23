@@ -83,14 +83,14 @@
                                     <children>
                                         <HBox alignment="CENTER_LEFT" spacing="12.0">
                                             <children>
-                                                <TextField promptText="Enter answer option..." style="-fx-background-radius: 8; -fx-padding: 10;" HBox.hgrow="ALWAYS" />
+                                                <TextField promptText="Enter answer option..." style="-fx-background-radius: 8; -fx-padding: 10;" styleClass="answerField" HBox.hgrow="ALWAYS" />
                                                 <ComboBox prefWidth="120.0" promptText="Low" style="-fx-background-color: #dcfce7; -fx-text-fill: #166534; -fx-background-radius: 8; -fx-font-weight: bold;" />
                                                 <Button style="-fx-background-color: #fee2e2; -fx-text-fill: #ef4444; -fx-background-radius: 8;" text="✕" />
                                             </children>
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" spacing="12.0">
                                             <children>
-                                                <TextField promptText="Enter answer option..." style="-fx-background-radius: 8; -fx-padding: 10;" HBox.hgrow="ALWAYS" />
+                                                <TextField promptText="Enter answer option..." style="-fx-background-radius: 8; -fx-padding: 10;" styleClass="answerField" HBox.hgrow="ALWAYS" />
                                                 <ComboBox prefWidth="120.0" promptText="High" style="-fx-background-color: #fee2e2; -fx-text-fill: #b91c1c; -fx-background-radius: 8; -fx-font-weight: bold;" />
                                                 <Button style="-fx-background-color: #fee2e2; -fx-text-fill: #ef4444; -fx-background-radius: 8;" text="✕" />
                                             </children>

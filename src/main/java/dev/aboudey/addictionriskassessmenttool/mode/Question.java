@@ -12,7 +12,9 @@ public class Question {
     public Answer selectedAns;
 
     public Question(int id, String text) {
-       this.answers = new ArrayList<>();
+        this.id = id;
+        this.text = text;
+        this.answers = new ArrayList<>();
     }
 
     public void addAnswer(Answer answer) {

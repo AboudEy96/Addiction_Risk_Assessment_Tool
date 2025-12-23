@@ -62,13 +62,18 @@ public class CreateTestScreen {
         List<TextField> answerFields = getAllTextFields(answersContainer, "answerField");
 
         for (int q = 0; q < questionFields.size(); q++) {
-            Question question = new Question(q, questionFields.get(q).getText());
+            String qText = questionFields.get(q).getText();
+            System.out.println("Question #" + q + ": '" + qText + "'");  // **طباعة نص السؤال**
+
+            Question question = new Question(q, qText);
+
             for (int a = 0; a < answerFields.size(); a++) {
                 Answer answer = new Answer(a, answerFields.get(a).getText(), 5);
                 question.addAnswer(answer);
             }
             test.addQuestion(question);
         }
+
         System.out.println("Test saved: " + test.getTitle());
 
         try {
@@ -80,6 +85,7 @@ public class CreateTestScreen {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     public void onAddQuestionClick() throws IOException{
