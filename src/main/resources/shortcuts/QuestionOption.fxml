@@ -23,7 +23,7 @@
     </effect>
 
     <HBox alignment="CENTER_LEFT" spacing="10">
-        <Label text="Question"
+        <Label text="Q"
                textFill="#334155">
             <font>
                 <Font name="Segoe UI Bold" size="18.0"/>

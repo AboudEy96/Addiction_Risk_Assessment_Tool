@@ -19,7 +19,6 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainController {
@@ -85,12 +84,18 @@ public class MainController {
 """);
         btn.getStyleClass().add("testButton");
         //
-        btn.setOnAction(e -> openTest(testFile));
+        btn.setOnAction(e -> {
+            try {
+                openTest(testFile);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
         testsBoxHandler.getChildren().add(btn);
     }
 
-    private void openTest(Path testFile) {
+    private void openTest(Path testFile) throws IOException {
         System.out.println("Opening test file: " + testFile.getFileName());
 
         try {
@@ -105,7 +110,7 @@ public class MainController {
                 switch (parts[0]) {
 
                     case "TEST" -> {
-                        SelectedTest.selectedTestName = parts[2];
+                        SelectedTest.selectedTestName =parts[2];
                     }
 
                     case "QUESTION" -> {
@@ -137,6 +142,13 @@ public class MainController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Parent root = FXMLLoader.load(
+                getClass().getResource("take-test.fxml")
+        );
+        Stage stage = (Stage) testsBoxHandler
+                .getScene()
+                .getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
-
 }
