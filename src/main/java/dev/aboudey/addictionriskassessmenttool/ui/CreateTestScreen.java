@@ -9,10 +9,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -32,6 +34,8 @@ public class CreateTestScreen {
     @FXML
     private Button questionAddButton;
 
+    @FXML
+    private Button buttonCancel;
 
 
     // answer containers for Answers and for Questions to make prototype and copy paste it
@@ -52,7 +56,7 @@ public class CreateTestScreen {
 
     // make the test
     @FXML
-    public void onSaveButtonClick() {
+    public void onSaveButtonClick() throws IOException {
 
         Test test = new TestBuilder()
                 .setTitle(titleField.getText())
@@ -76,6 +80,15 @@ public class CreateTestScreen {
         }
 
         System.out.println("Test saved: " + test.getTitle());
+
+        Parent root = FXMLLoader.load(
+                getClass().getResource("/dev/aboudey/addictionriskassessmenttool/hello-view.fxml")
+        );
+        Stage stage = (Stage) answersContainer
+                .getScene()
+                .getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
 
         try {
             Path path = Path.of("src/main/resources/tests/" + test.getTitle()  + ".txt");
