@@ -2,6 +2,7 @@ package dev.aboudey.addictionriskassessmenttool;
 
 import dev.aboudey.addictionriskassessmenttool.mode.Answer;
 import dev.aboudey.addictionriskassessmenttool.mode.Question;
+import dev.aboudey.addictionriskassessmenttool.repository.ResultRepository;
 import dev.aboudey.addictionriskassessmenttool.repository.Singletoon.SelectedTest;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,11 +10,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -30,6 +32,12 @@ public class MainController {
     private VBox testsBoxHandler;
 
     @FXML
+    private LineChart<String, Number> riskChart;
+
+    private XYChart.Series<String, Number> series = new XYChart.Series<>();
+
+
+    @FXML
     public void initialize() {
         System.out.println("initialize CALLED");
 
@@ -42,6 +50,7 @@ public class MainController {
 
             Path testsPath = Paths.get(url.toURI());
 
+
             Files.list(testsPath)
                     .filter(p -> p.toString().endsWith(".txt"))
                     .forEach(this::createTestButton);
@@ -49,7 +58,30 @@ public class MainController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        ResultRepository.loadResults();
+
+        series.setName("Risk Results");
+        riskChart.getData().clear();
+        riskChart.getData().add(series);
+        loadResults();
+
+        for (ResultRepository.Result r : ResultRepository.results) {
+            series.getData().add(
+                    new XYChart.Data<>(r.testName, r.risk)
+            );
+        }
+
     }
+    private void loadResults() {
+        series.getData().clear();
+
+        for (ResultRepository.Result r : ResultRepository.results) {
+            series.getData().add(
+                    new XYChart.Data<>(r.testName, r.risk)
+            );
+        }
+    }
+
 
     @FXML
     protected void onCreateTestButtonClick(ActionEvent e) throws IOException {
@@ -97,7 +129,6 @@ public class MainController {
 
     private void openTest(Path testFile) throws IOException {
         System.out.println("Opening test file: " + testFile.getFileName());
-
         try {
             List<String> lines = Files.readAllLines(testFile);
 

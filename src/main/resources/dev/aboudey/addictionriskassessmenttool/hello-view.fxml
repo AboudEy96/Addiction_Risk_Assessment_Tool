@@ -65,12 +65,12 @@
 
                 <Button fx:id="createTestButton" onAction="#onCreateTestButtonClick" prefHeight="50" prefWidth="240" style="                                    -fx-background-color: #10B981;                                               -fx-text-fill: white;                                                 -fx-font-size: 15px;                                                         -fx-font-weight: bold;                                                      -fx-background-radius: 12;                                                       -fx-cursor: hand; " text="+ Create New Test" />
             </VBox>
-            <LineChart>
+            <LineChart fx:id="riskChart" prefWidth="900" prefHeight="400">
                 <xAxis>
-                    <CategoryAxis prefWidth="1065.0" side="BOTTOM" />
+                    <CategoryAxis label="Test Name"/>
                 </xAxis>
                 <yAxis>
-                    <NumberAxis side="LEFT" />
+                    <NumberAxis label="Risk %"/>
                 </yAxis>
             </LineChart>
         </VBox>

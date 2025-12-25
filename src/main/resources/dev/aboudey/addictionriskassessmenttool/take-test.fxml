@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #f8fafc;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.aboudey.addictionriskassessmenttool.ui.TestScreen">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #f8fafc;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.aboudey.addictionriskassessmenttool.ui.TestScreen">
 
     <center>
         <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: #f8fafc;">
@@ -51,17 +59,15 @@
 
                                 <VBox fx:id="answersContainer" spacing="15.0">
                                     <children>
-                                        <fx:define>
-                                            <ToggleGroup fx:id="answersToggleGroup" />
-                                        </fx:define>
 
-                                        <RadioButton style="-fx-font-size: 14px; -fx-text-fill: #475569; -fx-cursor: hand;" text="answer 1">
+                                        <RadioButton fx:id="answerYes" style="-fx-font-size: 14px; -fx-text-fill: #475569; -fx-cursor: hand;" text="Yes">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="answersToggleGroup" />
                                  </toggleGroup></RadioButton>
-                                        <RadioButton style="-fx-font-size: 14px; -fx-text-fill: #475569; -fx-cursor: hand;" text="answer 2" toggleGroup="$answersToggleGroup" />
-                                        <RadioButton style="-fx-font-size: 14px; -fx-text-fill: #475569; -fx-cursor: hand;" text="answer 3" toggleGroup="$answersToggleGroup" />
-                                        <RadioButton style="-fx-font-size: 14px; -fx-text-fill: #475569; -fx-cursor: hand;" text="answer 4" toggleGroup="$answersToggleGroup" />
+                                        <RadioButton fx:id="answerNo" style="-fx-font-size: 14px; -fx-text-fill: #475569; -fx-cursor: hand;" text="No" toggleGroup="$answersToggleGroup" />
+                                        <fx:define>
+                                            <ToggleGroup fx:id="answersToggleGroup" />
+                                        </fx:define>
                                     </children>
                                 </VBox>
                             </children>
