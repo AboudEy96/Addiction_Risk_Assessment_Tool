@@ -13,4 +13,8 @@ public class SelectedTest {
     public static ArrayList<Question> selectedQuestions = new ArrayList<>();;
 
 
+    public static void clear() {
+        selectedTestName = "";
+        selectedQuestions.clear();
+    }
 }

@@ -128,6 +128,7 @@ public class MainController {
     }
 
     private void openTest(Path testFile) throws IOException {
+        SelectedTest.clear();
         System.out.println("Opening test file: " + testFile.getFileName());
         try {
             List<String> lines = Files.readAllLines(testFile);

@@ -4,3 +4,9 @@ uhnm|80.0
 last test inshallah|50.0
 testtt|0.0
 narrrr|100.0
+last test inshallah|100.0
+اختبار اللياقة|50.0
+last test inshallah|100.0
+اختبار اللياقة|50.0
+narrrr|0.0
+SayMyName|50.0

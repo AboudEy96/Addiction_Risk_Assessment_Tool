@@ -40,6 +40,9 @@ public class TestScreen
     private RadioButton answerYes;
 
 
+    @FXML
+    private Label progressLabel;
+
     public List<Test> tests;
 
     private int currentQuestion = 0;
@@ -48,12 +51,13 @@ public class TestScreen
     private VBox answersContainer;
 
     @FXML
-    public void initialize() {
+    public void initialize()
+    {
         System.out.println("initialize CALLED");
         updateFields();
+        progressLabel.setText("Question 1 of " + questionsList.size());
     }
     // list of questions
-
     // st
     private final List<Question> questionsList = SelectedTest.selectedQuestions;
     private final String textName = SelectedTest.selectedTestName;
@@ -64,9 +68,12 @@ public class TestScreen
         if (!isAnswerSelected()) return;
 
         addRiskForYes();
+        progressLabel.setText("Question " + currentQuestion +" of " + questionsList.size());
+
 
         if (currentQuestion < questionsList.size() - 1) {
             currentQuestion++;
+
             updateFields();
             answerYes.setSelected(false);
         } else {
