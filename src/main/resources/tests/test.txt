@@ -1,8 +1,0 @@
-TEST|0|test
-QUESTION|0|tetsetsetststs 1
-ANSWER|0||5
-ANSWER|1||5
-QUESTION|1|testtststs
-ANSWER|0||5
-ANSWER|1||5
-END

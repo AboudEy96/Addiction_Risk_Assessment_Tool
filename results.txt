@@ -1,4 +1,0 @@
-Kondisyon testi|100.0
-Kalp testi|75.0Kalp Hastalığı Risk Testi|0.0
-Akciğer Sağlığı Ön Tarama Testi|60.0
-test|100.0
